@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Card from './Card'
 import './App.css'
 
@@ -29,6 +30,15 @@ const USERS = [
 ]
 
 function App() {
+  const [search, setSearch] = useState('')
+
+  const USERS_LIST = USERS.filter(element => {
+    if (!element.pseudo.toLowerCase().includes(search.toLowerCase())) {
+      return false
+    }
+    return true
+  })
+
   return (
     <>
       <h1>
@@ -41,8 +51,15 @@ function App() {
         <p>Il y a {USERS.length} utilisateurs inscrits !</p>
       )}
 
+      <input 
+        type="text"
+        placeholder="Rechercher un utilisateur..."
+        onChange={event => setSearch(event.target.value)}
+        className="search-input"
+      />
+
       <div className="cards-container">
-        {USERS.map(user => (
+        {USERS_LIST.map(user => (
           <Card 
             key={user.id}
             {...user}

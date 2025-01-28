@@ -44,4 +44,29 @@ h3 {
 p {
   color: #444;
   line-height: 1.5;
+}
+
+.border {
+  border: 3px solid red;
+}
+
+.search-input {
+  padding: 10px;
+  margin: 20px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: white;
+  color: black;
+}
+
+.search-input::placeholder {
+  color: #666;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #646cff;
+  box-shadow: 0 0 5px rgba(100, 108, 255, 0.3);
 } 

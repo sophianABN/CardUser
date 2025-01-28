@@ -1,6 +1,10 @@
+import { useState } from 'react'
+import Like from './Like'
 import './App.css'
 
 function Card({ image, pseudo, email, description, sexe }) {
+  const [isHovered, setIsHovered] = useState(false)
+
   const getBackgroundColor = () => {
     switch(sexe) {
       case 'homme':
@@ -16,8 +20,10 @@ function Card({ image, pseudo, email, description, sexe }) {
 
   return (
     <article 
-      className="card"
+      className={`card ${isHovered ? 'border' : ''}`}
       style={{ backgroundColor: getBackgroundColor() }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <img 
         src={image} 
@@ -27,6 +33,7 @@ function Card({ image, pseudo, email, description, sexe }) {
       <h2>{pseudo}</h2>
       <h3>{email}</h3>
       <p>{description}</p>
+      <Like />
     </article>
   )
 }
